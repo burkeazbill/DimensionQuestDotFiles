@@ -1,6 +1,6 @@
 "$schema" = 'https://starship.rs/config-schema.json'
-# p10k-rainbow
-# Left semi: [](fg:#FFFFFF)
+# Theme Name: DimensionQuest-Rainbow
+# Inspired by the PowerLevel10k Rainbow prompt
 format = """\
 [╭─](fg:#FFFFFF)[ $os ${custom.interface}$localip](fg:#3B76F0 bg:#FFFFFF)[](fg:#FFFFFF bg:#3B76F0)\
 $sudo\
@@ -23,10 +23,8 @@ $line_break\
 
 add_newline = true
 
-# Yellow right pointer: [](fg:#c4a000 bg:#030B16)\
-# Green git color from OMZ P10k: #3e7904
 # Left Pointer: []
-# THEME SOUCE: https://github.com/theRubberDuckiee/dev-environment-files/blob/main/starship.toml
+# Theme Inspiration: https://github.com/theRubberDuckiee/dev-environment-files/blob/main/starship.toml
 # Found some tidbits here too: https://github.com/starship/starship/issues/5755
 # NOTE: Many quotes that look empty actually have NerdFont Glyphs in them, 
 # many are not visible in text editors but render at the prompt
@@ -38,7 +36,7 @@ format = '[ $path ]($style)[$read_only]($read_only_style)'
 style = 'fg:#E4E4E4 bg:#3B76F0'
 truncation_symbol = " ~/…/"
 truncation_length = 8
-# home_symbol = ' ' # Folder icon: 
+# home_symbol = ' '
 
 [directory.substitutions]
 "~/Downloads" = ""
