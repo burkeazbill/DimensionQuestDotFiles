@@ -1,0 +1,424 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+# p10k-rainbow
+# Left semi: [](fg:#FFFFFF)
+format = """\
+[╭─](fg:#FFFFFF)[ $os ${custom.interface}$localip](fg:#3B76F0 bg:#FFFFFF)[](fg:#FFFFFF bg:#3B76F0)\
+$sudo\
+$directory\
+[](fg:#3B76F0 bg:#sec)\
+$git_branch\
+$git_commit\
+$git_status\
+$git_state\
+($git_metrics)\
+$fill\
+$status$shell\
+$docker_context\
+$cmd_duration\
+$kubernetes\
+$jobs\
+$hostname\
+$line_break\
+[╰─](fg:#FFFFFF)$character"""
+
+add_newline = true
+
+# Yellow right pointer: [](fg:#c4a000 bg:#030B16)\
+# Green git color from OMZ P10k: #3e7904
+# Left Pointer: []
+# THEME SOUCE: https://github.com/theRubberDuckiee/dev-environment-files/blob/main/starship.toml
+# Found some tidbits here too: https://github.com/starship/starship/issues/5755
+# NOTE: Many quotes that look empty actually have NerdFont Glyphs in them, 
+# many are not visible in text editors but render at the prompt
+# Make sure text editer inteface font is set to a NerdFont like Meslo
+
+[directory]
+disabled = false
+format = '[ $path ]($style)[$read_only]($read_only_style)'
+style = 'fg:#E4E4E4 bg:#3B76F0'
+truncation_symbol = " ~/…/"
+truncation_length = 8
+# home_symbol = ' ' # Folder icon: 
+
+[directory.substitutions]
+"~/Downloads" = ""
+#"~/Music" = ""
+#"~/Pictures" = " "
+#"~/Videos" = ""
+#"~/Projects" = "󱌢"
+#"~/School" = "󰑴"
+#"~/GitHub" = ""
+"~/.config" = ""
+"~" = ""
+# Show a folder: 
+
+[kubernetes]
+format = '[](fg:#40189c bg:#444444)[$symbol k8s $context( \($namespace\))]($style)'
+style = 'bg:#40189c fg:#FFFFFF'
+disabled = false
+
+[docker_context]
+format = '[$symbol]($style)'
+style = 'bg:#444444'
+disabled = false
+detect_files = [
+  'docker-compose.yml',
+  'docker-compose.yaml',
+  'compose.yaml',
+  'compose.yml',
+  'Dockerfile',
+]
+
+[helm]
+format = '[⎈ $version](bold white) '
+
+[fill]
+symbol = ' '
+# style = 'bold black'
+disabled = false
+
+[git_branch]
+format = '[](fg:#3e7904 bg:#sec)[ $symbol$branch(:$remote_branch) ]($style)'
+symbol = "  "
+style = "fg:#080e00 bg:#3e7904"
+
+[git_status]
+format = '[$all_status]($style)'
+style = "fg:#080e00 bg:#3e7904"
+
+[git_metrics]
+format = "([+$added]($added_style))[]($added_style)[](fg:#3e7904 bg:#sec)"
+added_style = "fg:#080e00 bg:#3e7904"
+deleted_style = "fg:bright-red bg:235"
+disabled = false
+
+[cmd_duration]
+format = "[](fg:#7a7a7a bg:#444444)[took $duration  ]($style)"
+style = "fg:#9b9b9b bg:#444444"
+min_time = 1
+disabled = false
+
+[shell]
+disabled = false
+powershell_indicator = ' '
+pwsh_indicator = ' '
+bash_indicator = ' '
+zsh_indicator = '%_ '
+cmd_indicator = ' '
+unknown_indicator = ' '
+style = 'cyan bold bg:#444444'
+format = '[$indicator]($style)'
+
+[custom]
+[custom.direnv]
+format = "[](fg:#7a7a7a bg:#444444)[ $symbol ]($style)"
+style = "fg:#7a7a7a bg:#444444"
+symbol = "[▼](fg:white bg:#444444)"
+when = "test \"$DIRENV_WATCHES\" != \"\""
+
+[custom.vim_shell]
+format = "[](fg:#7a7a7a bg:#444444)[ $symbol ]($style)"
+style = "fg:#7a7a7a bg:#444444"
+symbol = "[](fg:green bg:#444444)"
+when = "test \"$VIMRUNTIME\" != \"\""
+
+[custom.interface]
+format = " $symbol $output"
+description = "testing"
+symbol = '󰩠'
+when = true
+# command = "route get default | grep interface | awk '{print $2}'" # MacOS
+command = "ip route get 1 | awk '{print $5}'" # Linux
+# command = "netstat -rn | grep default | awk '{print $6}'" # BSD
+disabled = true
+
+[localip]
+ssh_only = true
+format = ' $localipv4'
+disabled = false
+
+[status]
+disabled = false
+format = "[](fg:#444444)[$signal_name$symbol ]($style)"
+map_symbol = true
+not_found_symbol ="🔍"
+sigint_symbol = "[✘](fg:#d60202 bg:#444444)"
+style = "bg:#444444"
+success_symbol = "[✔](fg:green bg:#444444)"
+symbol = "[✘](fg:#d60202 bg:#444444)"
+
+[time]
+disabled = false
+time_format = "%R" # Hour:Minute Format
+style = "bg:#1d2230"
+format = '[[ 󱑍 $time ](bg:#1C3A5E fg:#8DFBD2)]($style)'
+
+[os]
+format = "[$symbol]($style)"
+style = "fg:prim bg:sec"
+disabled = false
+
+[os.symbols]
+Alpine = ""
+Amazon = ""
+Android = ""
+Arch = ""
+CentOS = ""
+Debian = ""
+DragonFly = "🐉" # ""
+Emscripten = "🔗"
+EndeavourOS = "" # ""
+Fedora = ""
+FreeBSD = ""
+Garuda = ""
+Gentoo = ""
+HardenedBSD = "聯"
+Illumos = "🐦"
+Linux = ""
+Macos = ""
+Manjaro = ""
+Mariner = ""
+MidnightBSD = "🌘"
+Mint = ""
+NetBSD = ""
+NixOS = ""
+OpenBSD = "" # ""
+OpenCloudOS = "☁️"
+openEuler = ""
+openSUSE = ""
+OracleLinux = "⊂⊃"
+Pop = "" # ""
+Raspbian = ""
+Redhat = ""
+RedHatEnterprise = ""
+Redox = "🧪"
+Solus = "" # " "
+SUSE = ""
+Ubuntu = ""
+Unknown = ""
+Windows = ""
+
+[jobs]
+format = ' ($style)[$symbol$number](fg:primt bg:prim)'
+style = 'fg:prim bg:sec'
+symbol = '󰇺 '
+#symbol_threshold = 1
+#number_threshold = 1
+disabled = false
+
+[hostname]
+ssh_only = true
+format = '[](fg:#7a7a7a bg:#444444)[$ssh_symbol on ](bold blue bg:#444444)[$hostname](bold red bg:#444444) '
+detect_env_vars = [
+  '!TMUX', 
+  'SSH_CONNECTION',
+  ]
+trim_at = '.'
+disabled = false
+# Only show the host name if on SSH connection and NOT in TMUX
+# Dont display the FQDN, only the hostname up to the first .
+
+# Cloud Providers
+[gcloud]
+format = 'on [$symbol$account(@$domain)(\($region\))]($style) '
+style = 'bold blue'
+symbol = '️ '
+
+[gcloud.region_aliases]
+us-central1 = 'uc1'
+asia-northeast1 = 'an1'
+
+[azure]
+disabled = false
+format = '[](fg:#3376CD)[$symbol($subscription)]($style)[](fg:#3376CD)'
+style = 'fg:#3376CD bold inverted'
+symbol = '󰠅 '
+
+[aws]
+format = 'on [$symbol($profile )(\($region\) )]($style)'
+style = 'bold orange'
+symbol = ' '
+
+[aws.region_aliases]
+ap-southeast-2 = 'au'
+us-east-1 = 'va'
+
+[character]
+disabled = false
+success_symbol = '[❯](bold #F2F2F2) '
+error_symbol = '[❯](bold red) '
+
+### Disabled options
+[golang]
+disabled = true
+format = '[](fg:cyan)[$symbol($version )]($style)[](fg:cyan)'
+style = 'fg:cyan inverted'
+symbol = ' '
+
+[terraform]
+disabled = true
+symbol = '󱁢 '
+#format = '[](fg:105)[$symbol$version( $workspace)]($style)[](fg:105)'
+format = '[](fg:105)[$symbol]($style)[](fg:105)'
+style = 'fg:105 inverted'
+
+[pulumi]
+disabled = true
+
+
+[buf]
+disabled = true
+
+[bun]
+disabled = true
+
+[c]
+disabled = true
+
+[cmake]
+disabled = true
+
+[cobol]
+disabled = true
+
+[conda]
+disabled = true
+
+[crystal]
+disabled = true
+
+[daml]
+disabled = true
+
+[dart]
+disabled = true
+
+[deno]
+disabled = true
+
+[elixir]
+disabled = true
+
+[elm]
+disabled = true
+
+[erlang]
+disabled = true
+
+[fennel]
+disabled = true
+
+[guix_shell]
+disabled = true
+
+[gradle]
+disabled = true
+
+[haskell]
+disabled = true
+
+[haxe]
+disabled = true
+
+[java]
+disabled = true
+
+[julia]
+disabled = true
+
+[kotlin]
+disabled = true
+
+[lua]
+disabled = true
+
+[meson]
+disabled = true
+
+[nim]
+disabled = true
+
+[nix_shell]
+disabled = true
+
+[nodejs]
+disabled = true
+
+[ocaml]
+disabled = true
+
+[opa]
+disabled = true
+
+[openstack]
+disabled = true
+
+[package]
+disabled = true
+
+[perl]
+disabled = true
+
+[php]
+disabled = true
+
+[pijul_channel]
+disabled = true
+
+[purescript]
+disabled = true
+
+[python]
+disabled = true
+
+[quarto]
+disabled = true
+
+[rlang]
+disabled = true
+
+[raku]
+disabled = true
+
+[red]
+disabled = true
+
+[ruby]
+disabled = true
+
+[rust]
+disabled = true
+
+[scala]
+disabled = true
+
+[shlvl]
+disabled = true
+
+[singularity]
+disabled = true
+
+[solidity]
+disabled = true
+
+[spack]
+disabled = true
+
+[swift]
+disabled = true
+
+[typst]
+disabled = true
+
+[vagrant]
+disabled = true
+
+[vlang]
+disabled = true
+
+[vcsh]
+disabled = true
+
+[zig]
+disabled = true
+
