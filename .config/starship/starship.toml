@@ -1,9 +1,10 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 # Theme Name: DimensionQuest-Rainbow
 # Inspired by the PowerLevel10k Rainbow prompt
+# TODO: Replace color codes with pallette and color names
+#      - Offer different color themes
 format = """\
-[╭─](fg:#FFFFFF)[ $os ${custom.interface}$localip](fg:#3B76F0 bg:#FFFFFF)[](fg:#FFFFFF bg:#3B76F0)\
-$sudo\
+[╭─](fg:#FFFFFF)[ $os $sudo ${custom.interface}$localip](fg:#3B76F0 bg:#FFFFFF)[](fg:#FFFFFF bg:#3B76F0)\
 $directory\
 [](fg:#3B76F0 bg:#sec)\
 $git_branch\
@@ -29,127 +30,6 @@ add_newline = true
 # NOTE: Many quotes that look empty actually have NerdFont Glyphs in them, 
 # many are not visible in text editors but render at the prompt
 # Make sure text editer inteface font is set to a NerdFont like Meslo
-
-[directory]
-disabled = false
-format = '[ $path ]($style)[$read_only]($read_only_style)'
-style = 'fg:#E4E4E4 bg:#3B76F0'
-truncation_symbol = " ~/…/"
-truncation_length = 8
-# home_symbol = ' '
-
-[directory.substitutions]
-"~/Downloads" = ""
-#"~/Music" = ""
-#"~/Pictures" = " "
-#"~/Videos" = ""
-#"~/Projects" = "󱌢"
-#"~/School" = "󰑴"
-#"~/GitHub" = ""
-"~/.config" = ""
-"~" = ""
-# Show a folder: 
-
-[kubernetes]
-format = '[](fg:#40189c bg:#444444)[$symbol k8s $context( \($namespace\))]($style)'
-style = 'bg:#40189c fg:#FFFFFF'
-disabled = false
-
-[docker_context]
-format = '[$symbol]($style)'
-style = 'bg:#444444'
-disabled = false
-detect_files = [
-  'docker-compose.yml',
-  'docker-compose.yaml',
-  'compose.yaml',
-  'compose.yml',
-  'Dockerfile',
-]
-
-[helm]
-format = '[⎈ $version](bold white) '
-
-[fill]
-symbol = ' '
-# style = 'bold black'
-disabled = false
-
-[git_branch]
-format = '[](fg:#3e7904 bg:#sec)[ $symbol$branch(:$remote_branch) ]($style)'
-symbol = "  "
-style = "fg:#080e00 bg:#3e7904"
-
-[git_status]
-format = '[$all_status]($style)'
-style = "fg:#080e00 bg:#3e7904"
-
-[git_metrics]
-format = "([+$added]($added_style))[]($added_style)[](fg:#3e7904 bg:#sec)"
-added_style = "fg:#080e00 bg:#3e7904"
-deleted_style = "fg:bright-red bg:235"
-disabled = false
-
-[cmd_duration]
-format = "[](fg:#7a7a7a bg:#444444)[took $duration  ]($style)"
-style = "fg:#9b9b9b bg:#444444"
-min_time = 1
-disabled = false
-
-[shell]
-disabled = false
-powershell_indicator = ' '
-pwsh_indicator = ' '
-bash_indicator = ' '
-zsh_indicator = '%_ '
-cmd_indicator = ' '
-unknown_indicator = ' '
-style = 'cyan bold bg:#444444'
-format = '[$indicator]($style)'
-
-[custom]
-[custom.direnv]
-format = "[](fg:#7a7a7a bg:#444444)[ $symbol ]($style)"
-style = "fg:#7a7a7a bg:#444444"
-symbol = "[▼](fg:white bg:#444444)"
-when = "test \"$DIRENV_WATCHES\" != \"\""
-
-[custom.vim_shell]
-format = "[](fg:#7a7a7a bg:#444444)[ $symbol ]($style)"
-style = "fg:#7a7a7a bg:#444444"
-symbol = "[](fg:green bg:#444444)"
-when = "test \"$VIMRUNTIME\" != \"\""
-
-[custom.interface]
-format = " $symbol $output"
-description = "testing"
-symbol = '󰩠'
-when = true
-# command = "route get default | grep interface | awk '{print $2}'" # MacOS
-command = "ip route get 1 | awk '{print $5}'" # Linux
-# command = "netstat -rn | grep default | awk '{print $6}'" # BSD
-disabled = true
-
-[localip]
-ssh_only = true
-format = ' $localipv4'
-disabled = false
-
-[status]
-disabled = false
-format = "[](fg:#444444)[$signal_name$symbol ]($style)"
-map_symbol = true
-not_found_symbol ="🔍"
-sigint_symbol = "[✘](fg:#d60202 bg:#444444)"
-style = "bg:#444444"
-success_symbol = "[✔](fg:green bg:#444444)"
-symbol = "[✘](fg:#d60202 bg:#444444)"
-
-[time]
-disabled = false
-time_format = "%R" # Hour:Minute Format
-style = "bg:#1d2230"
-format = '[[ 󱑍 $time ](bg:#1C3A5E fg:#8DFBD2)]($style)'
 
 [os]
 format = "[$symbol]($style)"
@@ -196,6 +76,117 @@ Ubuntu = ""
 Unknown = ""
 Windows = ""
 
+[custom]
+[custom.interface]
+format = " $symbol $output"
+description = "testing"
+symbol = '󰩠'
+when = true
+# command = "route get default | grep interface | awk '{print $2}'" # MacOS
+command = "ip route get 1 | awk '{print $5}'" # Linux
+# command = "netstat -rn | grep default | awk '{print $6}'" # BSD
+disabled = false
+
+[localip]
+ssh_only = false
+format = ' $localipv4'
+disabled = false
+
+[sudo]
+format = '$symbol'
+symbol = ' 🧙'
+disabled = false
+
+[directory]
+disabled = false
+format = '[ $path ]($style)[$read_only]($read_only_style)'
+style = 'fg:#E4E4E4 bg:#3B76F0'
+truncation_symbol = " ~/…/"
+truncation_length = 3 # How many folder names should be displayed before truncation symbol is used
+# home_symbol = ' '
+
+[directory.substitutions]
+"~/Downloads" = ""
+#"~/Music" = ""
+#"~/Pictures" = " "
+#"~/Videos" = ""
+#"~/Projects" = "󱌢"
+#"~/School" = "󰑴"
+#"~/GitHub" = ""
+"~/.config" = ""
+"~" = ""
+# Show a folder: 
+
+[fill]
+symbol = ' '
+# style = 'bold black'
+disabled = false
+
+[git_branch]
+format = '[](fg:#3e7904 bg:#sec)[ $symbol$branch(:$remote_branch) ]($style)'
+symbol = "  "
+style = "fg:#080e00 bg:#3e7904"
+
+[git_status]
+format = '[$all_status]($style)'
+style = "fg:#080e00 bg:#3e7904"
+
+[git_metrics]
+format = "([+$added]($added_style))[]($added_style)[](fg:#3e7904 bg:#sec)"
+added_style = "fg:#080e00 bg:#3e7904"
+deleted_style = "fg:bright-red bg:235"
+disabled = false
+
+########### Right Prompt ################################
+[status]
+disabled = false
+format = "[](fg:#444444)[$signal_name$symbol ]($style)"
+map_symbol = true
+not_found_symbol ="🔍"
+sigint_symbol = "[✘](fg:#d60202 bg:#444444)"
+style = "bg:#444444"
+success_symbol = "[✔](fg:green bg:#444444)"
+symbol = "[✘](fg:#d60202 bg:#444444)"
+
+[shell]
+disabled = false
+powershell_indicator = ' '
+pwsh_indicator = ' '
+bash_indicator = ' '
+zsh_indicator = '%_ '
+cmd_indicator = ' '
+unknown_indicator = ' '
+style = 'cyan bold bg:#444444'
+format = '[$indicator]($style)'
+
+[docker_context]
+format = '[$symbol$context]($style)'
+style = 'bg:#444444'
+symbol = '🐳 '
+disabled = false
+only_with_files = true
+detect_files = [
+  'docker-compose.yml',
+  'docker-compose.yaml',
+  'compose.yaml',
+  'compose.yml',
+  'Dockerfile',
+]
+
+[cmd_duration]
+format = "[](fg:#7a7a7a bg:#444444)[took $duration  ]($style)"
+style = "fg:#9b9b9b bg:#444444"
+min_time = 1
+disabled = false
+
+[kubernetes]
+format = '[](fg:#40189c bg:#444444)[$symbol k8s $context( \($namespace\))]($style)'
+style = 'bg:#40189c fg:#FFFFFF'
+disabled = false
+
+[helm]
+format = '[⎈ $version](bold white) '
+
 [jobs]
 format = ' ($style)[$symbol$number](fg:primt bg:prim)'
 style = 'fg:prim bg:sec'
@@ -216,30 +207,6 @@ disabled = false
 # Only show the host name if on SSH connection and NOT in TMUX
 # Dont display the FQDN, only the hostname up to the first .
 
-# Cloud Providers
-[gcloud]
-format = 'on [$symbol$account(@$domain)(\($region\))]($style) '
-style = 'bold blue'
-symbol = '️ '
-
-[gcloud.region_aliases]
-us-central1 = 'uc1'
-asia-northeast1 = 'an1'
-
-[azure]
-disabled = false
-format = '[](fg:#3376CD)[$symbol($subscription)]($style)[](fg:#3376CD)'
-style = 'fg:#3376CD bold inverted'
-symbol = '󰠅 '
-
-[aws]
-format = 'on [$symbol($profile )(\($region\) )]($style)'
-style = 'bold orange'
-symbol = ' '
-
-[aws.region_aliases]
-ap-southeast-2 = 'au'
-us-east-1 = 'va'
 
 [character]
 disabled = false
@@ -247,6 +214,7 @@ success_symbol = '[❯](bold #F2F2F2) '
 error_symbol = '[❯](bold red) '
 
 ### Disabled options
+# For a full list of configuraitons, see https://starship.rs/config/
 [golang]
 disabled = true
 format = '[](fg:cyan)[$symbol($version )]($style)[](fg:cyan)'
@@ -259,6 +227,34 @@ symbol = '󱁢 '
 #format = '[](fg:105)[$symbol$version( $workspace)]($style)[](fg:105)'
 format = '[](fg:105)[$symbol]($style)[](fg:105)'
 style = 'fg:105 inverted'
+
+# Cloud Providers 
+[gcloud]
+disabled = true
+format = 'on [$symbol$account(@$domain)(\($region\))]($style) '
+style = 'bold blue'
+symbol = '️ '
+
+[gcloud.region_aliases]
+us-central1 = 'uc1'
+asia-northeast1 = 'an1'
+
+[azure]
+disabled = true
+format = '[](fg:#3376CD)[$symbol($subscription)]($style)[](fg:#3376CD)'
+style = 'fg:#3376CD bold inverted'
+symbol = '󰠅 '
+
+[aws]
+disabled = true
+format = 'on [$symbol($profile )(\($region\) )]($style)'
+style = 'bold orange'
+symbol = ' '
+
+[aws.region_aliases]
+ap-southeast-2 = 'au'
+us-east-1 = 'va'
+
 
 [pulumi]
 disabled = true
