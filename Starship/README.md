@@ -1,5 +1,7 @@
 # Prompt installation
 
+## Theme Name: DimensionQuest-Rainbow
+
 If you wish to use the prompt configuration I have here, simply copy the starship.toml to your home directory under the .config folder.
 
 Please read on below to see some examples of the features implemented in this font configuration.
