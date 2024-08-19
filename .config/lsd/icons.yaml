@@ -1,0 +1,26 @@
+# Default icons that lsd ships with
+# Can be found here:
+# https://github.com/lsd-rs/lsd/blob/master/src/theme/icon.rs
+# Here's an example override file
+# https://github.com/lsd-rs/lsd?tab=readme-ov-file#icon-theme
+
+# name:
+#   .trash: 
+#   .cargo: 
+#   .emacs.d: 
+#   a.out: 
+# extension:
+#   go: 
+#   hs: 
+#   rs: 🦀
+# filetype:
+#   dir: 📂
+#   file: 📄
+#   pipe: 📩
+#   socket: 󰆨
+#   executable: 
+#   symlink-dir: 
+#   symlink-file: 
+#   device-char: 
+#   device-block: 󰜫
+#   special: 

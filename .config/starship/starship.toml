@@ -4,7 +4,7 @@
 # TODO: Replace color codes with pallette and color names
 #      - Offer different color themes
 format = """\
-[╭─](fg:#FFFFFF)[ $os $sudo ${custom.interface}$localip](fg:#3B76F0 bg:#FFFFFF)[](fg:#FFFFFF bg:#3B76F0)\
+[╭─](fg:#FFFFFF)[$os$sudo${custom.interface}$localip](fg:#3B76F0 bg:#FFFFFF)[](fg:#FFFFFF bg:#3B76F0)\
 $directory\
 [](fg:#3B76F0 bg:#sec)\
 $git_branch\
@@ -18,7 +18,7 @@ $docker_context\
 $cmd_duration\
 $kubernetes\
 $jobs\
-$hostname\
+$username$hostname\
 $line_break\
 [╰─](fg:#FFFFFF)$character"""
 
@@ -32,7 +32,7 @@ add_newline = true
 # Make sure text editer inteface font is set to a NerdFont like Meslo
 
 [os]
-format = "[$symbol]($style)"
+format = "[ $symbol ]($style)"
 style = "fg:prim bg:sec"
 disabled = false
 
@@ -45,7 +45,7 @@ CentOS = ""
 Debian = ""
 DragonFly = "🐉" # ""
 Emscripten = "🔗"
-EndeavourOS = "" # ""
+EndeavourOS = ""
 Fedora = ""
 FreeBSD = ""
 Garuda = ""
@@ -60,17 +60,17 @@ MidnightBSD = "🌘"
 Mint = ""
 NetBSD = ""
 NixOS = ""
-OpenBSD = "" # ""
+OpenBSD = ""
 OpenCloudOS = "☁️"
 openEuler = ""
 openSUSE = ""
 OracleLinux = "⊂⊃"
-Pop = "" # ""
+Pop = ""
 Raspbian = ""
 Redhat = ""
 RedHatEnterprise = ""
 Redox = "🧪"
-Solus = "" # " "
+Solus = ""
 SUSE = ""
 Ubuntu = ""
 Unknown = ""
@@ -85,17 +85,17 @@ when = true
 # command = "route get default | grep interface | awk '{print $2}'" # MacOS
 command = "ip route get 1 | awk '{print $5}'" # Linux
 # command = "netstat -rn | grep default | awk '{print $6}'" # BSD
-disabled = false
+disabled = true
 
 [localip]
-ssh_only = false
+ssh_only = true
 format = ' $localipv4'
 disabled = false
 
 [sudo]
-format = '$symbol'
-symbol = ' 🧙'
-disabled = false
+format = ' $symbol'
+symbol = '🧙'
+disabled = true
 
 [directory]
 disabled = false
@@ -115,7 +115,6 @@ truncation_length = 3 # How many folder names should be displayed before truncat
 #"~/GitHub" = ""
 "~/.config" = ""
 "~" = ""
-# Show a folder: 
 
 [fill]
 symbol = ' '
@@ -176,7 +175,7 @@ detect_files = [
 [cmd_duration]
 format = "[](fg:#7a7a7a bg:#444444)[took $duration  ]($style)"
 style = "fg:#9b9b9b bg:#444444"
-min_time = 1
+min_time = 60
 disabled = false
 
 [kubernetes]
@@ -188,16 +187,21 @@ disabled = false
 format = '[⎈ $version](bold white) '
 
 [jobs]
-format = ' ($style)[$symbol$number](fg:primt bg:prim)'
-style = 'fg:prim bg:sec'
+format = '[ $symbol$number]($style)'
+style = 'fg:#7a7a7a bg:#444444'
 symbol = '󰇺 '
 #symbol_threshold = 1
 #number_threshold = 1
 disabled = false
 
+[username]
+disabled = false
+show_always = false
+format = " $user"
+
 [hostname]
 ssh_only = true
-format = '[](fg:#7a7a7a bg:#444444)[$ssh_symbol on ](bold blue bg:#444444)[$hostname](bold red bg:#444444) '
+format = '[](fg:#7a7a7a bg:#444444)[ ssh: ](bold blue bg:#444444)[$hostname](bold red bg:#444444) '
 detect_env_vars = [
   '!TMUX', 
   'SSH_CONNECTION',

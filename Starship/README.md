@@ -1,8 +1,9 @@
-# Prompt installation
+# Theme Name: DimensionQuest-Rainbow
 
-## Theme Name: DimensionQuest-Rainbow
+## Prompt installation
 
-If you wish to use the prompt configuration I have here, simply copy the starship.toml to your home directory under the .config folder.
+If you wish to use the prompt configuration I have here, simply copy the .config/starship/starship.toml to your home directory under the .config folder. If you wish to keep your starship.toml in a subdirectory of .config (or anywhere else), you'll need to export an environment variable before enabling starship as per the [Config File Location Documentation](https://starship.rs/config/).
+
 
 Please read on below to see some examples of the features implemented in this font configuration.
 
