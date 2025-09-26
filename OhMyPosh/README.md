@@ -42,4 +42,4 @@ This theme is configured to use a transient prompt so that you screen does not f
 - Execution time - [Python] - [Azure] - [GCP] - [AWS] - [ArgoCD] - [Terraform] - [Kubectl] - [Helm] - [Docker] - last command status - time
 
 ## Line 2
-- [Root indicator] - shell (pwsh/zsh/bash/sh/cmd) - Right Chevron 
+- [Root indicator] - shell (pwsh/zsh/bash/sh/cmd) - Right Chevron >
