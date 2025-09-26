@@ -1,6 +1,6 @@
 # My LSD Configuration preferences
 
-I've stored a copy of my personal settings under .config/lsd/config.yml
+I've stored a copy of my theme here: [.config/lsd/config.yml](../.config/lsd/config.yml)
 
 ## Notable changes I have made
 blocks: 

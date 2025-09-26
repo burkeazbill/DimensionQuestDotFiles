@@ -1,5 +1,7 @@
 # Theme Name: DimensionQuest-Rainbow
 
+I've stored a copy of my theme here: [.config/starship/starship.toml](../.config/starship/starship.toml)
+
 ## Prompt installation
 
 If you wish to use the prompt configuration I have here, simply copy the .config/starship/starship.toml to your home directory under the .config folder. If you wish to keep your starship.toml in a subdirectory of .config (or anywhere else), you'll need to export an environment variable before enabling starship as per the [Config File Location Documentation](https://starship.rs/config/).
