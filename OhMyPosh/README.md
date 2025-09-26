@@ -12,7 +12,7 @@ The guidance below assumes you already have [oh-my-posh](https://ohmyposh.dev/do
 
 If you wish to use the prompt configuration I have here, simply copy the .config/ohmyposh/holoconsole.omp.json to your home directory under the .config/ohmyposh folder. Then update your .zshrc / .bashrc with the following as the last line:
 
-```zsh
+```bash
 # For zsh
 eval "$(oh-my-posh init zsh --config ~/.config/ohmyposh/holoconsole.omp.json)"
 ```
@@ -20,6 +20,11 @@ eval "$(oh-my-posh init zsh --config ~/.config/ohmyposh/holoconsole.omp.json)"
 ```bash
 # For bash
 eval "$(oh-my-posh init bash --config ~/.config/ohmyposh/holoconsole.omp.json)"
+```
+
+```powershell
+# For powershell
+oh-my-posh init pwsh --config ~/.config/ohmyposh/holoconsole.omp.json | Invoke-Expression
 ```
 
 Please read on below to see some examples of the features implemented in this font configuration.
