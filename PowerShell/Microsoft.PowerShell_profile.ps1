@@ -3,10 +3,16 @@
     Burke's PowerShell Terminal Profile
     
     .DESCRIPTION
-    The code contained below should be placed in the following locations:
+    The code contained below should be placed in the following Windows locations:
     $HOME\Documents\PowerShell\Microsoft.VSCode_profile.ps1 -- for VS Code PowerShell Terminal
     $HOME\Documents\PowerShell\Microsoft.PowerShell_profile.ps1 -- for PowerShell Core (7.x) Terminal
     $HOME\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1 -- for Microsoft PowerShell 5.1
+    MacOS/Linux Locations: $PROFILE
+    ~/.config/powershell/Microsoft.VSCode_profile.ps1 -- for VS Code PowerShell Terminal
+    ~/.config/powershell/Microsoft.PowerShell_profile.ps1 -- for PowerShell Core (7.x) Terminal
+    Global: $PROFILE.AllUsersCurrentHost
+    /usr/local/microsoft/powershell/7/Microsoft.PowerShell_profile.ps1
+    /usr/local/microsoft/powershell/7/Microsoft.VSCode_profile.ps1
 #>
 
 $MaximumHistoryCount = 5000
