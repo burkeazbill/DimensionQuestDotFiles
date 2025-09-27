@@ -61,3 +61,9 @@ if (Get-Command starship -ErrorAction SilentlyContinue) {
   
   Enable-TransientPrompt
 }
+
+if (Get-Command oh-my-posh -ErrorAction SilentlyContinue) {
+  # If the oh-my-posh command is found, add the prompt with 
+  # the default config stored in $HOME/.config/ohmyposh/holoconsole.omp.json  
+  oh-my-posh init pwsh --config ~/.config/ohmyposh/holoconsole.omp.json | Invoke-Expression
+}
