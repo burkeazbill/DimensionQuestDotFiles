@@ -152,7 +152,7 @@
           "invert_powerline": false,
           "foreground": "#000000",
           "background": "#ebcc34",
-          "template": " \ufd31 Kubernetes {{.Context}} cluster {{if .Namespace}}- {{.Namespace}} namespace{{end}} ",
+          "template": " \uDB84\uDCFE {{ regexReplaceAll \":.*\" .Context \"\" }}:{{ .Namespace }} ",
           "properties": {
             "cache_duration": "none"
           }
